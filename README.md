@@ -4,6 +4,9 @@ An Apache Ignite cross platform demonstration, demonstrating C#/C++ shared cache
 
 Currently, build and run is only supported on Windows.
 
+PowerShell is a prerequisite to run all the mentioned scripts.  Java 1.8+ is required, as well as .NET Core 6.0,
+cmake and a C++ compiler.
+
 ## Project components
 
 ### RequestProcessor
