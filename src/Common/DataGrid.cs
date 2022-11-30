@@ -6,7 +6,7 @@ using Apache.Ignite.Core.Discovery.Tcp;
 using Apache.Ignite.Core.Discovery.Tcp.Static;
 using Microsoft.Extensions.Logging;
 
-namespace Cfg.Common;
+namespace Demo.Common;
 
 public class DataGrid : IDataGrid, IDisposable
 {

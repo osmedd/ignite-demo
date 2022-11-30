@@ -1,4 +1,4 @@
-using Cfg.Common;
+using Demo.Common;
 
 var builder = WebApplication.CreateBuilder(args);
 

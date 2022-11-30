@@ -1,6 +1,6 @@
 ﻿using Apache.Ignite.Core.Compute;
 
-namespace Cfg.Common
+namespace Demo.Common
 {
     public class AssignTopicFunc : IComputeFunc<int>
     {

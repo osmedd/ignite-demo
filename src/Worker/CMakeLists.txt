@@ -95,3 +95,7 @@ add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E copy ${installLibraries} $<TARGET_FILE_DIR:${PROJECT_NAME}>
     COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_SOURCE_DIR}/../../config-cpp-client.xml $<TARGET_FILE_DIR:${PROJECT_NAME}>
     COMMAND_EXPAND_LISTS)
+
+install(TARGETS Worker DESTINATION ${CMAKE_SOURCE_DIR}/../../out/${platform}/Worker)
+install(FILES ${installLibraries} DESTINATION ${CMAKE_SOURCE_DIR}/../../out/${platform}/Worker)
+install(FILES ${CMAKE_SOURCE_DIR}/../../config-cpp-client.xml DESTINATION ${CMAKE_SOURCE_DIR}/../../out/${platform}/Worker)

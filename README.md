@@ -37,11 +37,25 @@ C++ console application that stores it's status in Apache Ignite.
 
 ## Run
 
-In separate terminals/consoles (or run each with redirection), run each component.
+In separate terminals/consoles (or run each with redirection), start each component.
 
 ```
 > projbin/start_ignite
 > projbin/start_requestprocessor
 > projbin/start_worker
 > projbin/start_worker -CPP
+```
+
+Each worker prints out it's unique worker id.
+
+To get the list of workers, use:
+```
+> curl http://localhost:5000/demo/workers
+```
+
+Note this will currently fail if you started the C++ worker and succeed if you only started the .NET worker.
+
+To see the status of one worker, for example, using an example Guid worker id:
+```
+> curl http://localhost:5000/demo/workers/8e74f96c-117d-42e2-96b7-71926fbcab5e
 ```

@@ -14,25 +14,25 @@ Push-Location $baseDir
 
 Use-PsEnv
 
+$platform = Get-Platform
+
 try {
     $env:DEFAULT_CONFIG = "$PWD/config-cpp-client.xml"
     if ($CPP) {
-        $platform = Get-Platform
-        $workerCppBuildDir = "$baseDir/build/$platform/Worker/Release"
+        $workerCppOutDir = "$baseDir/out/$platform/Worker"
         $env:DEFAULT_CONFIG = "$PWD/config-cpp-client.xml"
         $env:IGNITE_HOME = "$PWD/toolbox/apache-ignite-$env:IGNITE_VERSION-bin"
         Write-Verbose "start_worker: c++: IGNITE_HOME: $env:IGNITE_HOME"
-        if (!(Test-Path $workerCppBuildDir)) {
+        if (!(Test-Path $workerCppOutDir)) {
             Write-Error "start_worker: no C++ worker found!" -ErrorAction Stop
         }
         else {
-            Set-Location $workerCppBuildDir
-            ./Worker
+            & $workerCppOutDir/Worker
         }
     }
     else {
-        Set-Location src/Worker.NET
-        dotnet run
+        $workerNetOutDir = "$baseDir/out/$platform/Worker.NET"
+        & $workerNetOutDir/Worker.NET
     }
 }
 finally {

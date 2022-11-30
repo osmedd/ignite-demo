@@ -1,4 +1,4 @@
-﻿namespace Cfg.Common;
+﻿namespace Demo.Common;
 
 public interface IWorkerStatus
 {

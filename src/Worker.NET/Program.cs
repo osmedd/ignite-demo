@@ -1,5 +1,5 @@
-using Cfg.Common;
-using Cfg.Worker.NET;
+using Demo.Common;
+using Demo.Worker.NET;
 
 Console.WriteLine("Assign topic function name: {0}", AssignTopicFunc.FunctionName);
 

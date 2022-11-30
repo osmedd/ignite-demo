@@ -13,10 +13,13 @@ Push-Location $baseDir
 
 Use-PsEnv
 
+$platform = Get-Platform
+
 try {
+    $env:ASPNETCORE_ENVIRONMENT = "Development"
     $env:DEFAULT_CONFIG = "$PWD/config-cpp-client.xml"
-    Set-Location src/RequestProcessor
-    dotnet run
+    $requestprocessorOutDir = "$baseDir/out/$platform/RequestProcessor"
+    & $requestprocessorOutDir/RequestProcessor
 }
 finally {
     Pop-Location

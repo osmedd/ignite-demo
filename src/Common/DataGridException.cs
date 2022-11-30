@@ -1,6 +1,6 @@
 ﻿using System.Runtime.Serialization;
 
-namespace Cfg.Common
+namespace Demo.Common
 {
     [Serializable]
     public class DataGridException : Exception

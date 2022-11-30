@@ -4,9 +4,9 @@ using Apache.Ignite.Core.Cache.Configuration;
 using Apache.Ignite.Core.Configuration;
 using Apache.Ignite.Core.Discovery.Tcp;
 using Apache.Ignite.Core.Discovery.Tcp.Static;
-using Cfg.Common;
+using Demo.Common;
 
-namespace Cfg.Worker.NET;
+namespace Demo.Worker.NET;
 
 public class Worker : BackgroundService
 {

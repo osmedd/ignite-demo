@@ -1,7 +1,7 @@
 ﻿using Apache.Ignite.Core.Binary;
 using Microsoft.Extensions.Logging;
 
-namespace Cfg.Common;
+namespace Demo.Common;
 
 public class WorkerStatus : IWorkerStatus, IBinarizable
 {
