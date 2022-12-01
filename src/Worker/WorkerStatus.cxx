@@ -7,7 +7,7 @@ WorkerStatus::WorkerStatus() : m_workerId("UNSET")
 
 WorkerStatus::WorkerStatus(const std::string& workerId) : m_workerId(workerId)
 {
-    m_startTime = time(0);
+    m_startTime = std::time(0);
     addTopicId("Unassigned");
 }
 

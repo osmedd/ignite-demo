@@ -39,11 +39,12 @@ public class DataGrid : IDataGrid, IDisposable
                 }
             }
         };
-        //var configFile = Environment.GetEnvironmentVariable("DEFAULT_CONFIG");
-        //if (!string.IsNullOrWhiteSpace(configFile))
-        //{
-        //    cfg.SpringConfigUrl = configFile;
-        //}
+        var configFile = Environment.GetEnvironmentVariable("DEFAULT_CONFIG");
+        if (!string.IsNullOrWhiteSpace(configFile))
+        {
+            _logger.LogInformation("DataGrid: using config file: {ConfigFile}", configFile);
+            cfg.SpringConfigUrl = configFile;
+        }
         Client = Ignition.Start(cfg);
         if (!Client.GetCluster().IsActive())
         {
