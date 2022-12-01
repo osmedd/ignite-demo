@@ -1,7 +1,7 @@
 ﻿using Apache.Ignite.Core;
+using Apache.Ignite.Core.Binary;
 using Apache.Ignite.Core.Cache;
 using Apache.Ignite.Core.Cache.Expiry;
-using Apache.Ignite.Core.Cache.Query;
 using Apache.Ignite.Core.Discovery.Tcp;
 using Apache.Ignite.Core.Discovery.Tcp.Static;
 using Microsoft.Extensions.Logging;
@@ -17,10 +17,10 @@ public class DataGrid : IDataGrid, IDisposable
         _logger = logger;
 
         ServerId = Guid.NewGuid();
-        var configFile = Environment.GetEnvironmentVariable("DEFAULT_CONFIG");
 
         var cfg = new IgniteConfiguration
         {
+            JavaPeerClassLoadingEnabled = true,
             MetricsLogFrequency = TimeSpan.Zero,
             ClientMode = true,
             DiscoverySpi = new TcpDiscoverySpi
@@ -29,12 +29,21 @@ public class DataGrid : IDataGrid, IDisposable
                 {
                     Endpoints = new[] { "127.0.0.1" }
                 }
+            },
+            BinaryConfiguration = new BinaryConfiguration(typeof(WorkerStatus))
+            {
+                CompactFooter = false,
+                NameMapper = new BinaryBasicNameMapper
+                {
+                    IsSimpleName= true
+                }
             }
         };
-        if (!string.IsNullOrWhiteSpace(configFile))
-        {
-            cfg.SpringConfigUrl = configFile;
-        }
+        //var configFile = Environment.GetEnvironmentVariable("DEFAULT_CONFIG");
+        //if (!string.IsNullOrWhiteSpace(configFile))
+        //{
+        //    cfg.SpringConfigUrl = configFile;
+        //}
         Client = Ignition.Start(cfg);
         if (!Client.GetCluster().IsActive())
         {

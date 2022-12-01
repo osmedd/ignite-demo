@@ -36,11 +36,13 @@
             <bean class="org.apache.ignite.configuration.BinaryConfiguration">
                 <property name="compactFooter" value="false"/>
 
+                <!--
                 <property name="idMapper">
                     <bean class="org.apache.ignite.binary.BinaryBasicIdMapper">
                         <property name="lowerCase" value="true"/>
                     </bean>
                 </property>
+                -->
                 
                 <property name="nameMapper">
                     <bean class="org.apache.ignite.binary.BinaryBasicNameMapper">

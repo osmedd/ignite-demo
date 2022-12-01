@@ -15,6 +15,7 @@ DataGridIgnite::DataGridIgnite()
     auto configFile = getenv("DEFAULT_CONFIG");
     if (configFile != NULL)
     {
+        std::cerr << "DataGridIgnite: found config file: " << configFile << std::endl;
         cfg.springCfgPath = configFile;
     }
 
